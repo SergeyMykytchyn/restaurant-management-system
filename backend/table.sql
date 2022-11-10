@@ -1,11 +1,11 @@
 create table restaurant.user(
   id int primary key AUTO_INCREMENT,
-  name varchar(250),
+  name varchar(255),
   contactNumber varchar(20),
-  email varchar(50),
-  password varchar(250),
-  status varchar(20),
-  role varchar(20),
+  email varchar(255),
+  password varchar(255),
+  status enum('true', 'false'),
+  role enum('admin', 'user'),
   UNIQUE (email)
 );
 
@@ -35,18 +35,18 @@ create table restaurant.product(
   name varchar(255) NOT NULL,
   categoryId int NOT NULL,
   description varchar(255),
-  price int,
-  status varchar(20)
+  price decimal(15,2),
+  status enum('true', 'false')
 );
 
 create table restaurant.bill(
   id int primary key AUTO_INCREMENT,
-  uuid varchar(200) NOT NULL,
+  uuid varchar(255) NOT NULL,
   name varchar(255) NOT NULL,
   email varchar(255) NOT NULL,
   contactNumber varchar(20) NOT NULL,
-  paymentMethod varchar(50) NOT NULL,
-  total int NOT NULL,
+  paymentMethod varchar(255) NOT NULL,
+  total decimal(15,2) NOT NULL,
   productDetails JSON DEFAULT NULL,
   createdBy varchar(255) NOT NULL 
 );
